@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIflection · Emotion Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-glow" aria-hidden="true"></div>
+        <p class="project-name">AIflection</p>
+        <div class="sidebar-header">
+          <p class="sidebar-eyebrow">Neural workspace</p>
+          <h1>AI Models</h1>
+          <p class="sidebar-hint">Pick a provider · chats persist per model</p>
+        </div>
+        <div id="model-list" class="model-list"></div>
+      </aside>
+
+      <main class="main" id="main-pane">
+        <div class="pane-top" id="pane-top">
+          <header class="topbar">
+            <div class="topbar-row">
+              <h2 id="current-model-title">ChatGPT</h2>
+              <span class="live-pill" title="Analysis scope">7-axis affect</span>
+            </div>
+            <p>Emotion scope: joy, sadness, anger, fear, surprise, disgust, love</p>
+            <div class="share-tools">
+              <button id="copy-link-btn" type="button">Copy page URL</button>
+              <button id="toggle-qr-btn" type="button">Show QR code</button>
+            </div>
+            <div id="qr-wrap" class="qr-wrap hidden">
+              <img id="qr-image" alt="site qr code" />
+            </div>
+          </header>
+        </div>
+
+        <div
+          class="resize-handle"
+          id="resize-after-top"
+          aria-label="Resize header and chat split"
+          title="Drag to shrink or expand the header area"
+          tabindex="0"
+        ></div>
+
+        <section id="chat-window" class="chat-window"></section>
+
+        <div
+          class="resize-handle"
+          id="resize-before-bottom"
+          aria-label="Resize chat and input split"
+          title="Drag to shrink or expand the input area"
+          tabindex="0"
+        ></div>
+
+        <div class="pane-bottom" id="pane-bottom">
+          <section class="composer">
+            <div class="composer-top">
+              <label for="input-mode">Input mode</label>
+              <select id="input-mode">
+                <option value="normal">Free text</option>
+                <option value="dialogue">Two-person dialogue</option>
+              </select>
+            </div>
+
+            <div id="normal-input-wrap">
+              <textarea
+                id="normal-input"
+                placeholder="Type your message..."
+              ></textarea>
+            </div>
+
+            <div id="dialogue-input-wrap" class="hidden">
+              <div id="dialogue-lines"></div>
+              <button id="add-dialogue-line" class="line-btn" type="button">
+                + Add line
+              </button>
+            </div>
+
+            <button id="send-btn" class="send-btn" type="button">Send</button>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
